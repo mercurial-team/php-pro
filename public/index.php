@@ -1,20 +1,25 @@
 <?php
 
-//use app\models\{Product, Users};
+use app\models\{Basket, Product, Users};
+use app\engine\{Autoload, Db};
 
-include "../engine/Autoload.php";
+include realpath("../config/config.php");
+include realpath("../engine/Autoload.php");
 
 spl_autoload_register([new Autoload(), 'loadClass']);
 
-$product = new Product(new Db());
-$users = new Users(new Db());
 
-function foo(IModels $model) {
-    return $model->getTableName();
-}
+//$product = new Product("Пицца","Описание", 125);
+$product = new Product();
+$product->name = "Чай";
+$product->insert();
+//$product->delete();
 
-echo foo($users);
+$product = $product->getOne(1);
 
-//echo $product->getOne(1);
+
+//$product->delete();
+var_dump($product);
+
 
 
