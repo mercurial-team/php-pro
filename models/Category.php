@@ -1,16 +1,15 @@
 <?php
 namespace app\models;
 
-class Users extends Model
+
+class Category extends Model
 {
     public $id;
-    public $login;
-    public $password;
     public $name;
-    public $balance;
 
     public function getTableName()
     {
-        return "User";
+        return "Category";
     }
+
 }

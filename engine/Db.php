@@ -13,7 +13,7 @@ class Db
         'host' => 'localhost',
         'login' => 'root',
         'password' => '',
-        'database' => 'shop',
+        'database' => 'phpshop',
         'charset' => 'utf8'
     ];
 

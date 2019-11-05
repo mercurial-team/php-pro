@@ -15,10 +15,23 @@ abstract class Model implements IModels
     }
 
     public function insert() {
-        foreach ($this as $key => $value)
-            var_dump("$key => $value");
-        $sql = "INSERT INTO ()...";
-var_dump($sql);
+        $array_fields = [];
+        $array_values = [];
+        foreach ($this as $key => $value){
+            if ($key != 'db'){
+                array_push($array_fields, $key);
+                array_push($array_values, $value);
+            }
+        }
+        $array_fields = implode(", ", $array_fields);
+        $array_values = implode(", ", $array_values);
+        echo '<pre>';
+        var_dump($array_fields);
+        echo '</pre>';
+        //INSERT INTO `Product`(`id`, `name`, `description`, `category`, `image`, `price`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6])
+        $sql = "INSERT INTO {$this->getTableName()} ({$array_fields}) VALUES ({$array_values})";
+        var_dump($sql);
+        var_dump($this->db);
     }
 
     public function delete() {
